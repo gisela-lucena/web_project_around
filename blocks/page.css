@@ -7,4 +7,5 @@ html {
   font-family: "Inter", Arial, sans-serif;
   color: white;
   margin: 0 auto;
+  max-width: 1280px;
 }

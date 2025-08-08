@@ -14,26 +14,72 @@
 <body>
   <div class="page">
       <header class="header">
-        <div class="header__container">
+        <div class="header__logo">
           <img
-            class="header__logo"
+            class="header__logo-icon"
             src="./images/logoVector.svg"
             alt="Around the US"
           />
+        </div>
+        <div class="header__profile">
+          <img
+            class="header__image"
+            src="./images/avatar.jpg"
+            alt="Jacques Cousteau profile picture">
           <h1 class="header__title">Jacques Cousteau</h1>
-          <button class="header__edit-button" type="button">
+          <button class="header__edit-button" type="submit" aria-label="Editar perfil">
             <img class="header__edit-icon"
               src="./images/editButtonVector.svg"
               alt="Editar perfil"/>
           </button>
           <p class="header__subtitle">Explorador</p>
-          <img
-            class="header__image"
-            src="./images/avatar.jpg"
-            alt="Jacques Cousteau profile picture">
+          <button class="header__add-button" type="submit" aria-label="Adicionar local">
+            <img class="header__add-icon"
+              src="./images/addButtonVector.svg"
+              alt="Adicionar local"/>
+            </button>
         </div>
       </header>
-  <main class="content"></main>
+  <main class="content">
+    <section class="cards">
+      <div class="card">
+        <img class="card__image" src="./images/Vale de Yosemite.jpg" alt="Vale de Yosemite com rios, arvores e montanhas" />
+        <div class="card__description">
+          <h2 class="card__title">Vale de Yosemite</h2>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/Lago Louise.jpg" alt="Lago Louise com rio e montanhas com neve" />
+        <div class="card__description">
+          <h2 class="card__title">Lago Louise</h2>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/Montanhas Care.jpg" alt="Montanhas Care com montanhas e por do sol" />
+        <div class="card__description">
+          <h2 class="card__title">Montanhas Care...</h2>
+        </div>
+      </div>
+       <div class="card">
+        <img class="card__image" src="./images/Latemar.jpg" alt="Latemar com montanhas e ceu estrelado" />
+        <div class="card__description">
+          <h2 class="card__title">Latemar</h2>
+        </div>
+      </div>
+       <div class="card">
+        <img class="card__image" src="./images/Parque Nacional.jpg" alt="Parque Nacional com montanhas e lago" />
+        <div class="card__description">
+          <h2 class="card__title">Parque Nacional...</h2>
+        </div>
+      </div>
+       <div class="card">
+        <img class="card__image" src="./images/Lago di Braies.jpg" alt="Lago di Braies com montanhas com neve e barco de madeira" />
+        <div class="card__description">
+          <h2 class="card__title">Lago di Braies</h2>
+        </div>
+      </div>
+    </section>
+  </main>
   <footer class="footer"></footer>
   </div>
   <script src="./index.js"></script>

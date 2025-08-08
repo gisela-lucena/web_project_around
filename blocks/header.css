@@ -4,27 +4,31 @@
   text-align: center;
 }
 
-.header__container {
-   border-bottom: 1px solid #545454;
-   padding-bottom: 15px;
-  }
+.header__logo {
+  max-width: 880px;
+  margin: 45px auto 40px;
+  border-bottom: 1px solid #545454;
+  display: flex;
+  padding-bottom: 41px;
+  justify-content: start;
+ }
 
-  .header__logo {
-
-  }
-
-  .header__title {
-
-  }
-
-  .header__subtitle {
+.header__logo-icon {
+  max-width: 173px;
 
   }
 
-  .header__image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
+.header__title {
 
+  }
+
+.header__subtitle {
+
+  }
+
+.header__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
   }
