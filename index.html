@@ -18,46 +18,51 @@
           <img
             class="header__logo-icon"
             src="./images/logoVector.svg"
-            alt="Around the US"
-          />
+            alt="Around the US"/>
         </div>
-        <div class="header__profile">
+        </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__picture">
           <img
-            class="header__image"
+            class="profile__image"
             src="./images/avatar.jpg"
-            alt="Jacques Cousteau profile picture">
-          <h1 class="header__title">Jacques Cousteau</h1>
-          <button class="header__edit-button" aria-label="Editar perfil">
-            <img class="header__edit-icon"
+            alt="Jacques Cousteau profile picture"/>
+          </div>
+        <div class="profile__info-container">
+          <div class="profile__info">
+          <h1 class="profile__title">Jacques Cousteau</h1>
+          <button class="profile__edit-button" aria-label="Editar perfil">
+            <img class="profile__edit-icon"
               src="./images/editButtonVector.svg"
               alt="Editar perfil"/>
           </button>
-          <p class="header__subtitle">Explorador</p>
-          <button class="header__add-button" aria-label="Adicionar local">
-            <img class="header__add-icon"
+          </div>
+          <p class="profile__subtitle">Explorador</p>
+        </div>
+          <button class="profile__add-place" aria-label="Adicionar local">
+            <img class="profile__add-icon"
               src="./images/addButtonVector.svg"
               alt="Adicionar local"/>
             </button>
-        </div>
-      </header>
-  <main class="content">
+          </section>
     <section class="cards">
       <div class="card">
-        <img class="card__image" src="./images/Vale de Yosemite.jpg" alt="Vale de Yosemite com rios, arvores e montanhas" />
+        <img class="card__image" src="./images/ValedeYosemite.jpg" alt="Vale de Yosemite com rios, arvores e montanhas"/>
         <div class="card__description">
           <h2 class="card__title">Vale de Yosemite</h2>
           <img class="card__like-icon" src="./images/LikeVector.svg" alt="Botao de curtir"/>
         </div>
       </div>
       <div class="card">
-        <img class="card__image" src="./images/Lago Louise.jpg" alt="Lago Louise com rio e montanhas com neve" />
+        <img class="card__image" src="./images/LagoLouise.jpg" alt="Lago Louise com rio e montanhas com neve"/>
         <div class="card__description">
           <h2 class="card__title">Lago Louise</h2>
           <img class="card__like-icon" src="./images/LikeVector.svg" alt="Botao de curtir"/>
         </div>
       </div>
       <div class="card">
-        <img class="card__image" src="./images/Montanhas Care.jpg" alt="Montanhas Care com montanhas e por do sol" />
+        <img class="card__image" src="./images/MontanhasCare.jpg" alt="Montanhas Care com montanhas e por do sol"/>
         <div class="card__description">
           <h2 class="card__title">Montanhas Care...</h2>
           <img class="card__like-icon" src="./images/LikeVector.svg" alt="Botao de curtir"/>
@@ -71,14 +76,14 @@
         </div>
       </div>
        <div class="card">
-        <img class="card__image" src="./images/Parque Nacional.jpg" alt="Parque Nacional com montanhas e lago" />
+        <img class="card__image" src="./images/ParqueNacional.jpg" alt="Parque Nacional com montanhas e lago"/>
         <div class="card__description">
           <h2 class="card__title">Parque Nacional...</h2>
           <img class="card__like-icon" src="./images/LikeVector.svg" alt="Botao de curtir"/>
         </div>
       </div>
        <div class="card">
-        <img class="card__image" src="./images/Lago di Braies.jpg" alt="Lago di Braies com montanhas com neve e barco de madeira" />
+        <img class="card__image" src="./images/LagodiBraies.jpg" alt="Lago di Braies com montanhas com neve e barco de madeira"/>
         <div class="card__description">
           <h2 class="card__title">Lago di Braies</h2>
           <img class="card__like-icon" src="./images/LikeVector.svg" alt="Botao de curtir"/>
@@ -86,7 +91,8 @@
       </div>
     </section>
   </main>
-  <footer class="footer">&copy; 2025 Around the U.S.</footer>
+  <footer class="footer">&copy; 2025 Around the U.S.
+  </footer>
   </div>
       <div class="popup" id="edit-popup-profile">
       <div class="popup__content">
@@ -96,7 +102,6 @@
           type="button"
         ></button>
         <h3 class="popup__title">Editar Perfil</h3>
-
         <form class="popup__form" id="edit-profile-form">
           <input
             class="popup__input popup__input_edit_name"
