@@ -1,29 +1,40 @@
 .header {
   display: flex;
+  margin: 0 auto;
+  max-width: 880px;
+  padding-top: 45px;
   flex-direction: column;
-  text-align: center;
+
 }
 
 .header__logo {
-  max-width: 880px;
-  margin: 45px auto 40px;
   border-bottom: 1px solid #545454;
-  display: flex;
-  padding-bottom: 41px;
-  justify-content: start;
  }
 
 .header__logo-icon {
   max-width: 173px;
+  margin-bottom: 41px;
+ }
 
-  }
+.header__profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 120px;
+  margin: 40px auto 50px;
+  max-width: 880px;
+}
+
 
 .header__title {
-
+  max-width: 415px;
   }
 
 .header__subtitle {
-
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 415px;
   }
 
 .header__image {

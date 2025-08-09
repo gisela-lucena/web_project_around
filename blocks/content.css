@@ -1,0 +1,44 @@
+.cards {
+  max-width: 880px;
+  max-height: 743px;
+  margin: 50px auto 67px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 17px;
+}
+
+.card {
+  background-color: white;
+  max-width: 282px;
+  max-height: 361px;
+  border-radius: 10px;
+}
+
+.card__image {
+  max-width: 282px;
+  max-height: 282px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  object-fit: cover;
+
+}
+
+.card__description {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.card__title {
+  color: black;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.card__like-icon {
+  max-width: 21px;
+  max-height: 19px;
+}
