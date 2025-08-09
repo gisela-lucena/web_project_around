@@ -27,13 +27,13 @@
             src="./images/avatar.jpg"
             alt="Jacques Cousteau profile picture">
           <h1 class="header__title">Jacques Cousteau</h1>
-          <button class="header__edit-button" type="submit" aria-label="Editar perfil">
+          <button class="header__edit-button" aria-label="Editar perfil">
             <img class="header__edit-icon"
               src="./images/editButtonVector.svg"
               alt="Editar perfil"/>
           </button>
           <p class="header__subtitle">Explorador</p>
-          <button class="header__add-button" type="submit" aria-label="Adicionar local">
+          <button class="header__add-button" aria-label="Adicionar local">
             <img class="header__add-icon"
               src="./images/addButtonVector.svg"
               alt="Adicionar local"/>
@@ -88,6 +88,32 @@
   </main>
   <footer class="footer">&copy; 2025 Around the U.S.</footer>
   </div>
+      <div class="popup" id="edit-popup-profile">
+      <div class="popup__content">
+        <button
+          aria-label="Close popup"
+          class="popup__close"
+          type="button"
+        ></button>
+        <h3 class="popup__title">Editar Perfil</h3>
+
+        <form class="popup__form" id="edit-profile-form">
+          <input
+            class="popup__input popup__input_edit_name"
+            name="profile-name"
+            placeholder="Jacques Cousteau"
+            type="text"
+          />
+          <input
+            class="popup__input popup__input_edit_profession"
+            name="profession-name"
+            placeholder="Explorador"
+            type="text"
+          />
+          <button class="popup__button" type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
   <script src="./index.js"></script>
 </body>
 </html>

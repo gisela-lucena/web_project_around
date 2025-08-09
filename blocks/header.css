@@ -4,7 +4,6 @@
   max-width: 880px;
   padding-top: 45px;
   flex-direction: column;
-
 }
 
 .header__logo {
@@ -22,20 +21,41 @@
   align-items: center;
   justify-content: space-between;
   max-height: 120px;
-  margin: 40px auto 50px;
+  padding-top: 40px;
   max-width: 880px;
+
 }
 
 
 .header__title {
   max-width: 415px;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.14;
   }
+
+.header__edit-button {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffff;
+  background: none;
+}
 
 .header__subtitle {
   font-size: 18px;
   font-weight: 400;
   max-width: 415px;
   }
+
+.header__add-button {
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border: 1px solid #ffffff;
+  background: none;
+
+}
 
 .header__image {
   width: 120px;
