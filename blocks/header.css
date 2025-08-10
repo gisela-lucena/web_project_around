@@ -14,3 +14,15 @@
   max-width: 173px;
   margin-bottom: 41px;
  }
+
+@media screen and (max-width: 544px) {
+  .header {
+  max-width: 320px;
+  padding-top: 28px;
+   }
+
+  .header__logo-icon {
+  max-width: 126px;
+  margin-bottom: 32px;
+ }
+  }

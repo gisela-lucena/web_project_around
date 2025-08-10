@@ -1,6 +1,5 @@
 .cards {
   max-width: 880px;
-  max-height: 743px;
   margin: 50px auto 67px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -22,14 +21,12 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   object-fit: cover;
-
 }
 
 .card__description {
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 }
 
 .card__title {
@@ -41,4 +38,21 @@
 .card__like-icon {
   max-width: 21px;
   max-height: 19px;
+}
+
+@media screen and (max-width: 1024px) {
+  .cards {
+  max-width: 586px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+}
+
+@media screen and (max-width: 544px) {
+  .cards {
+  max-width: 282px;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  margin: 36px auto 50px;
+}
 }
