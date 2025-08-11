@@ -74,7 +74,6 @@
  .profile__info-container {
   align-items: center;
   margin: 30px auto 36px;
-
 }
 
 .profile__title {
@@ -90,7 +89,6 @@
   justify-content: center;
 }
 
-
 .profile__subtitle {
   font-size: 14px;
   max-width: 282px;
@@ -99,5 +97,4 @@
 .profile__add-place {
   width: 282px;
 }
-
   }
