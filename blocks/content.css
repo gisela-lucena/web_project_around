@@ -42,11 +42,22 @@
 }
 
 .card__like-icon {
-  max-width: 21px;
-  max-height: 19px;
-  background-image: url("./images/LikeVector.svg");
+  width: 21px;
+  height: 21px;
+  border: none;
+  background-image: url(../images/LikeVector.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100%;
+}
+
+.card__like-icon:active {
+  background-image: url(../images/likevectorActive.svg);
+}
+
+.card__like-icon:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1024px) {
