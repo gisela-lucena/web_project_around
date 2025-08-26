@@ -22,11 +22,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .popup__close {
   background: none;
   border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
 }
 
 .popup__close:hover {
@@ -38,11 +42,9 @@
 
 .popup__close-icon {
   transform: rotate(45deg);
-  position: relative;
-  top: -40px;
-  right: -240px;
   width: 40px;
   height: 40px;
+  z-index: 2;
 }
 
 .popup__title {
@@ -51,7 +53,7 @@
   width: 358px;
   font-size: 24px;
   font-weight: 900;
-  margin: 0 0 24px;
+  margin: 34px 0 24px;
 }
 
 .popup__form {
@@ -88,6 +90,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 
 .popup__image {
