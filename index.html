@@ -55,74 +55,7 @@
             />
           </button>
         </section>
-        <section class="cards">
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/ValedeYosemite.jpg"
-              alt="Vale de Yosemite com rios, arvores e montanhas"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Vale de Yosemite</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/LagoLouise.jpg"
-              alt="Lago Louise com rio e montanhas com neve"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Lago Louise</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/MontanhasCare.jpg"
-              alt="Montanhas Care com montanhas e por do sol"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Montanhas Care</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/Latemar.jpg"
-              alt="Latemar com montanhas e ceu estrelado"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Latemar</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/ParqueNacional.jpg"
-              alt="Parque Nacional com montanhas e lago"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Parque Nacional</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/LagodiBraies.jpg"
-              alt="Lago di Braies com montanhas com neve e barco de madeira"
-            />
-            <div class="card__description">
-              <h2 class="card__title">Lago di Braies</h2>
-              <button class="card__like-icon"></button>
-            </div>
-          </div>
-        </section>
+        <section class="cards"></section>
       </main>
       <footer class="footer">&copy; 2025 Around the U.S.</footer>
     </div>
@@ -154,6 +87,75 @@
         </form>
       </div>
     </div>
+
+    <div class="popup" id="add-card-popup">
+      <div class="popup__content">
+        <button
+          aria-label="Close popup"
+          class="popup__close"
+          type="button"
+          id="close-add-card"
+        >
+          <img
+            class="popup__close-icon"
+            src="./images/addButton.png"
+            alt="Fechar
+          popup"
+          />
+        </button>
+        <h3 class="popup__title">Novo Local</h3>
+        <form class="popup__form" id="add-card-form">
+          <input
+            class="popup__input popup__input_edit_title"
+            name="place-name"
+            placeholder="Titulo"
+            type="text"
+          />
+          <input
+            class="popup__input popup__input_edit_link"
+            name="image-link"
+            placeholder="Link de imagem"
+            type="text"
+          />
+          <button class="popup__button" type="submit">Criar</button>
+        </form>
+      </div>
+    </div>
+    <template id="initial_card">
+      <div class="card">
+        <img class="card__image" src="" alt="" />
+        <button class="card__delete-icon"></button>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__like-icon"></button>
+        </div>
+      </div>
+    </template>
+
+    <div class="popup" id="image-popup">
+      <div class="popup__image-content">
+        <img
+          class="popup__image"
+          src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
+          alt=""
+        />
+        <p class="popup__image-caption">TESTE</p>
+      </div>
+      <button
+        aria-label="Close popup"
+        class="popup__close"
+        type="button"
+        id="image-close-button"
+      >
+        <img
+          class="popup__close-icon"
+          src="./images/addButton.png"
+          alt="Fechar
+          popup"
+        />
+      </button>
+    </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
