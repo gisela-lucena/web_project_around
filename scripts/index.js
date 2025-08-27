@@ -22,7 +22,7 @@ const cardTemplate = document
   .getElementById("initial_card")
   .content.querySelector(".card");
 
-function createCard(data) {
+function prependCard(data) {
   const cardElement = cardTemplate.cloneNode(true);
 
   cardElement.querySelector(".card");
@@ -62,7 +62,7 @@ function createCard(data) {
 }
 
 function renderCard(data, container) {
-  container.prepend(createCard(data));
+  container.prepend(prependCard(data));
 }
 
 const initialCards = [

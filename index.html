@@ -76,12 +76,14 @@
             name="profile-name"
             placeholder="Nome"
             type="text"
+            required
           />
           <input
             class="popup__input popup__input_edit_profession"
             name="profession-name"
             placeholder="Sobre Mim"
             type="text"
+            required
           />
           <button class="popup__button" type="submit">Salvar</button>
         </form>
@@ -110,12 +112,14 @@
             name="place-name"
             placeholder="Titulo"
             type="text"
+            required
           />
           <input
             class="popup__input popup__input_edit_link"
             name="image-link"
             placeholder="Link de imagem"
             type="text"
+            required
           />
           <button class="popup__button" type="submit">Criar</button>
         </form>
@@ -134,12 +138,8 @@
 
     <div class="popup" id="image-popup">
       <div class="popup__image-content">
-        <img
-          class="popup__image"
-          src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
-          alt=""
-        />
-        <p class="popup__image-caption">TESTE</p>
+        <img class="popup__image" src="" alt="" />
+        <p class="popup__image-caption"></p>
         <button
           aria-label="Close popup"
           class="popup__close"
