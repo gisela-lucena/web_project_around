@@ -18,6 +18,11 @@ const popupImage = document.getElementById("image-popup");
 const popupImageCloseButton = popupImage.querySelector(".popup__close");
 const cardsList = document.querySelector(".cards");
 
+const addButton = document.querySelector(".popup__button");
+
+const formInput = document.querySelectorAll(".popup__input");
+const formError = document.querySelectorAll(".popup__input-error");
+
 const cardTemplate = document
   .getElementById("initial_card")
   .content.querySelector(".card");
@@ -100,11 +105,24 @@ popupCloseButton.addEventListener("click", () => {
   popup.style.display = "none";
 });
 
+function setSubmitButtonState(isFormValid) {
+  if (isFormValid) {
+    addButton.removeAttribute("disabled");
+    addButton.classList.remove("popup__button-disabled");
+  } else {
+    addButton.setAttribute("disabled", true);
+    addButton.classList.add("popup__button-disabled");
+  }
+}
+
 popupForm.addEventListener("submit", (event) => {
   event.preventDefault();
   profileTitle.textContent = popupInputEditName.value;
   profileProfession.textContent = popupInputEditProfession.value;
   popup.style.display = "none";
+  popupInputEditName.value = "";
+  popupInputEditProfession.value = "";
+  setSubmitButtonState(false);
 });
 
 addCardButton.addEventListener("click", () => {
@@ -125,8 +143,44 @@ addPlaceForm.addEventListener("submit", (event) => {
     cardsList
   );
   addCardsPopUp.style.display = "none";
+  popupInputEditTitle.value = "";
+  popupInputEditLink.value = "";
 });
 
 initialCards.forEach((card) => {
   renderCard(card, cardsList);
+});
+
+popupForm.addEventListener("input", function (evt) {
+  const isValid =
+    popupInputEditName.value.length > 0 &&
+    popupInputEditProfession.value.length > 0;
+  setSubmitButtonState(isValid);
+});
+
+const showError = (input, errorMessage) => {
+  input.classList.add("form__input_type_error");
+  errorMessage.classList.add("form__input-error_visible");
+};
+
+const hideError = (input, errorMessage) => {
+  input.classList.remove("form__input_type_error");
+  errorMessage.classList.remove("form__input-error_visible");
+};
+
+const inputList = document.querySelectorAll(".popup__input");
+function checkInputValidity(input) {
+  const formIsValid = input.validity.valid;
+  const errorMessage = input.nextElementSibling;
+
+  if (formIsValid) {
+    hideError(input, errorMessage);
+  } else {
+    showError(input, errorMessage);
+  }
+}
+inputList.forEach((input) => {
+  input.addEventListener("input", () => {
+    checkInputValidity(input);
+  });
 });

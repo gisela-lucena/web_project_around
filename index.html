@@ -70,22 +70,34 @@
           />
         </button>
         <h3 class="popup__title">Editar Perfil</h3>
-        <form class="popup__form" id="edit-profile-form">
+        <form class="popup__form input" id="edit-profile-form" novalidate>
           <input
             class="popup__input popup__input_edit_name"
             name="profile-name"
             placeholder="Nome"
             type="text"
             required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="popup__input-error"></span>
           <input
             class="popup__input popup__input_edit_profession"
             name="profession-name"
             placeholder="Sobre Mim"
             type="text"
             required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="popup__button" type="submit">Salvar</button>
+          <span class="popup__input-error"></span>
+          <button
+            disabled
+            class="popup__button popup__button-active popup__button-disabled"
+            type="submit"
+          >
+            Salvar
+          </button>
         </form>
       </div>
     </div>
