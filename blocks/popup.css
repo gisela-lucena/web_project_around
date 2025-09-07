@@ -112,14 +112,19 @@
   cursor: default;
 }
 
-.popup__input_type_error {
+.popup__input-error {
+  display: none;
   border-bottom: 1px solid red;
 }
 
-.popup__input-error {
-  color: red;
-  display: none;
-}
 .popup__input-error_visible {
   display: block;
+  color: red;
+}
+
+.popup__button-disabled {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: default;
 }
