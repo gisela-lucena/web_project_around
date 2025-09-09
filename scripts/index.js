@@ -201,3 +201,22 @@ addPlaceForm.addEventListener("input", () => {
 // ---- Estado inicial dos botões ----
 setSubmitButtonState(addButton, false);
 setSubmitButtonState(buttonAddPlace, false);
+
+// ---- Fechar popup com ESC ----
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    const openPopup = document.querySelector(".popup[style*='display: flex']");
+    if (openPopup) {
+      openPopup.style.display = "none";
+    }
+  }
+});
+
+// ---- Fechar popup clicando fora ----
+document.addEventListener("click", (event) => {
+  const openPopup = document.querySelector(".popup[style*='display: flex']");
+  if (openPopup && event.target === openPopup) {
+    openPopup.style.display = "none";
+  }
+});
