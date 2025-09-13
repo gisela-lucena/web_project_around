@@ -1,17 +1,3 @@
-// Habilitando a validação chamando enableValidation()
-// Valide todas as configurações
-
-// ---- Função genérica para botões ----
-function setSubmitButtonState(button, isFormValid) {
-  if (isFormValid) {
-    button.removeAttribute("disabled");
-    button.classList.remove("popup__button-disabled");
-  } else {
-    button.setAttribute("disabled", true);
-    button.classList.add("popup__button-disabled");
-  }
-}
-
 // ---- Funções de validação ----
 const hideError = (input, errorMessage) => {
   input.classList.remove("popup__input_type_error");
@@ -62,6 +48,18 @@ addPlaceForm.addEventListener("input", () => {
 setSubmitButtonState(addButton, false);
 setSubmitButtonState(buttonAddPlace, false);
 
+// ---- Eventos ----
+// Perfil
+profileEditButton.addEventListener("click", () => openPopup(popup));
+popupCloseButton.addEventListener("click", () => closePopup(popup));
+popupForm.addEventListener("submit", handleProfileSubmit);
+
+// Add Card
+addCardButton.addEventListener("click", () => openPopup(addCardsPopUp));
+addCardsPopUpCloseButton.addEventListener("click", () =>
+  closePopup(addCardsPopUp)
+);
+addPlaceForm.addEventListener("submit", handleAddCardSubmit);
 enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -70,4 +68,3 @@ enableValidation({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 });
-

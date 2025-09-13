@@ -13,6 +13,11 @@
   flex-direction: column;
 }
 
+.popup_opened {
+  display: flex;
+  z-index: 10;
+}
+
 .popup__content {
   background-color: white;
   border-radius: 10px;

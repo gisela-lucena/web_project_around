@@ -24,6 +24,35 @@ const cardTemplate = document
   .getElementById("initial_card")
   .content.querySelector(".card");
 
+// ---- Funções genéricas para popups ----
+function openPopup(popupElement) {
+  popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupByEsc);
+}
+
+function closePopup(popupElement) {
+  popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupByEsc);
+}
+
+function closePopupByEsc(event) {
+  if (event.key === "Escape") {
+    const openPopupElement = document.querySelector(".popup.popup_opened");
+    if (openPopupElement) {
+      closePopup(openPopupElement);
+    }
+  }
+}
+
+// Fechar clicando fora do popup
+document.querySelectorAll(".popup").forEach((popupElement) => {
+  popupElement.addEventListener("mousedown", (event) => {
+    if (event.target === popupElement) {
+      closePopup(popupElement);
+    }
+  });
+});
+
 // ---- Funções de Cards ----
 function prependCard(data) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -43,18 +72,18 @@ function prependCard(data) {
 
   // Abrir imagem em popup
   cardImage.addEventListener("click", () => {
-    popupImage.style.display = "flex";
-
-    popupImageCloseButton.addEventListener("click", () => {
-      popupImage.style.display = "none";
-    });
-
     const popupImageElement = document.querySelector(".popup__image");
     const popupCaptionElement = document.querySelector(".popup__image-caption");
+
     popupImageElement.src = data.link;
     popupImageElement.alt = data.name;
     popupCaptionElement.textContent = data.name;
+
+    openPopup(popupImage);
   });
+
+  // Fechar imagem
+  popupImageCloseButton.addEventListener("click", () => closePopup(popupImage));
 
   // Remover card
   cardElement
@@ -89,7 +118,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
   },
   {
-    name: "Parque Nacional da Vanoise ",
+    name: "Parque Nacional da Vanoise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
   },
   {
@@ -100,62 +129,35 @@ const initialCards = [
 
 initialCards.forEach((card) => renderCard(card, cardsList));
 
-// ---- Abrir/fechar popups ----
-profileEditButton.addEventListener("click", () => {
-  popup.style.display = "flex";
-});
-
-popupCloseButton.addEventListener("click", () => {
-  popup.style.display = "none";
-});
-
-addCardButton.addEventListener("click", () => {
-  addCardsPopUp.style.display = "flex";
-});
-
-addCardsPopUpCloseButton.addEventListener("click", () => {
-  addCardsPopUp.style.display = "none";
-});
-
 // ---- Atualizar perfil ----
-popupForm.addEventListener("submit", (event) => {
+function handleProfileSubmit(event) {
   event.preventDefault();
   profileTitle.textContent = popupInputEditName.value;
   profileProfession.textContent = popupInputEditProfession.value;
-  popup.style.display = "none";
-  popupInputEditName.value = "";
-  popupInputEditProfession.value = "";
+  closePopup(popup);
+  popupForm.reset();
   setSubmitButtonState(addButton, false);
-});
+}
 
 // ---- Adicionar novo card ----
-addPlaceForm.addEventListener("submit", (event) => {
+function handleAddCardSubmit(event) {
   event.preventDefault();
   renderCard(
     { name: popupInputEditTitle.value, link: popupInputEditLink.value },
     cardsList
   );
-  addCardsPopUp.style.display = "none";
-  popupInputEditTitle.value = "";
-  popupInputEditLink.value = "";
+  closePopup(addCardsPopUp);
+  addPlaceForm.reset();
   setSubmitButtonState(buttonAddPlace, false);
-});
+}
 
-// ---- Fechar popup com ESC ----
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    const openPopup = document.querySelector(".popup[style*='display: flex']");
-    if (openPopup) {
-      openPopup.style.display = "none";
-    }
+// ---- Função genérica para botões ----
+function setSubmitButtonState(button, isFormValid) {
+  if (isFormValid) {
+    button.removeAttribute("disabled");
+    button.classList.remove("popup__button-disabled");
+  } else {
+    button.setAttribute("disabled", true);
+    button.classList.add("popup__button-disabled");
   }
-});
-
-// ---- Fechar popup clicando fora ----
-document.addEventListener("click", (event) => {
-  const openPopup = document.querySelector(".popup[style*='display: flex']");
-  if (openPopup && event.target === openPopup) {
-    openPopup.style.display = "none";
-  }
-});
+}
