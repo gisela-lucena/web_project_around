@@ -1,6 +1,3 @@
-// ---- Importações ----
-import { openImagePopup } from "./utils.js";
-// ---- Funções de Cards ----
 export class Card {
   constructor(name, link, cardTemplateSelector) {
     this._name = name;
@@ -9,40 +6,24 @@ export class Card {
   }
 
   _getCard() {
-    const cardElement = document
+    return document
       .querySelector(this._cardTemplateSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-
-    return cardElement;
   }
 
-  _setEventListeners(cardElement) {
-    const likeButton = cardElement.querySelector(".card__like-icon");
-    const deleteButton = cardElement.querySelector(".card__delete-icon");
-    const cardImage = cardElement.querySelector(".card__image");
-
-    likeButton.addEventListener("click", () => {
-      this._handleCardLike();
-    });
- 
-    deleteButton.addEventListener("click", () => {
-      this._handleCardDeletion();
+  _setEventListeners() {
+    this._likeButton.addEventListener("click", () => {
+      this._likeButton.classList.toggle("active");
     });
 
-    cardImage.addEventListener("click", () => {
+    this._deleteButton.addEventListener("click", () => {
+      this._cardElement.remove();
+    });
+
+    this._cardImage.addEventListener("click", () => {
       openImagePopup(this._name, this._link);
     });
-  }
-  _handleCardLike() {
-    this._likeButton.classList.toggle("active");
-  }
-
-  _handleCardDeletion() {
-    this._cardElement.remove();
-  }
-  _handleCardClick() {
-    this._handleCardClick();
   }
 
   generateCard() {
@@ -57,7 +38,8 @@ export class Card {
 
     this._likeButton = this._cardElement.querySelector(".card__like-icon");
     this._deleteButton = this._cardElement.querySelector(".card__delete-icon");
-    this._setEventListeners(this._cardElement);
+
+    this._setEventListeners();
 
     return this._cardElement;
   }

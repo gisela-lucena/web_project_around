@@ -60,7 +60,7 @@
       <footer class="footer">&copy; 2025 Around the U.S.</footer>
     </div>
     <div class="popup" id="edit-popup-profile">
-      <div class="popup__content">
+      <div class="popup__content popup__container popup__container_type_image">
         <button aria-label="Close popup" class="popup__close" type="button">
           <img
             class="popup__close-icon"
@@ -74,7 +74,7 @@
           <div class="popup__input-container">
             <input
               class="popup__input popup__input_edit_name"
-              name="profile-name"
+              name="name"
               placeholder="Nome"
               type="text"
               required
@@ -83,10 +83,12 @@
             />
             <span class="popup__input-error popup__input-name-error"></span>
           </div>
-          <div class="popup__input-container">
+          <div
+            class="popup__input-container popup__container popup__container_type_image"
+          >
             <input
               class="popup__input popup__input_edit_profession"
-              name="profession-name"
+              name="job"
               placeholder="Sobre Mim"
               type="text"
               required
@@ -109,7 +111,7 @@
     </div>
 
     <div class="popup" id="add-card-popup">
-      <div class="popup__content">
+      <div class="popup__content popup__container popup__container_type_image">
         <button
           aria-label="Close popup"
           class="popup__close"
@@ -125,7 +127,9 @@
         </button>
         <h3 class="popup__title">Novo Local</h3>
         <form class="popup__form" id="add-card-form" novalidate>
-          <div class="popup__input-container">
+          <div
+            class="popup__input-container popup__container popup__container_type_image"
+          >
             <input
               class="popup__input popup__input_edit_title"
               name="place-name"
@@ -137,7 +141,9 @@
             />
             <span class="popup__input-error popup__input-title-error"></span>
           </div>
-          <div class="popup__input-container">
+          <div
+            class="popup__input-container popup__container popup__container_type_image"
+          >
             <input
               class="popup__input popup__input_edit_link"
               name="image-link"
@@ -169,7 +175,9 @@
     </template>
 
     <div class="popup" id="image-popup">
-      <div class="popup__image-content">
+      <div
+        class="popup__image-content popup__container popup__container_type_image"
+      >
         <img class="popup__image" alt="" />
         <p class="popup__image-caption"></p>
         <button

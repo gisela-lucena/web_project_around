@@ -1,14 +1,13 @@
 // ---- Importações ----
+import { PopupWithForm } from "./PopupWithForm.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import {
-  handleProfileSubmit,
-  handleAddCardSubmit,
   popupForm,
   addPlaceForm,
   cardsList,
 } from "./utils.js";
-// ---- Seletores ----
+
 
 // ---- Cards iniciais ----
 const initialCards = [
@@ -59,9 +58,8 @@ const validationConfig = new FormValidator(
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
   },
-  popupForm,
-  handleProfileSubmit
-);
+  popupForm);
+
 validationConfig.enableValidation();
 
 const addCardValidation = new FormValidator(
@@ -73,7 +71,13 @@ const addCardValidation = new FormValidator(
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__input-error",
   },
-  addPlaceForm,
-  handleAddCardSubmit
-);
+  addPlaceForm);
+
 addCardValidation.enableValidation();
+
+const profilePopup = new PopupWithForm("#edit-popup-profile", (formData) => {
+  console.log("Dados do formulário:", formData);
+
+});
+
+profilePopup.setEventListeners();
