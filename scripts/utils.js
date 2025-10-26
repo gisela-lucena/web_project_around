@@ -67,25 +67,6 @@ function closePopup(popupElement) {
   document.removeEventListener("keydown", closePopupByEsc);
 }
 
-// Fechar com Esc
-
-function closePopupByEsc(event) {
-  if (event.key === "Escape") {
-    const openPopupElement = document.querySelector(".popup.popup_opened");
-    if (openPopupElement) {
-      closePopup(openPopupElement);
-    }
-  }
-}
-
-// Fechar clicando fora do popup
-document.querySelectorAll(".popup").forEach((popupElement) => {
-  popupElement.addEventListener("mousedown", (event) => {
-    if (event.target === popupElement) {
-      closePopup(popupElement);
-    }
-  });
-});
 
 // --- Perfil
 
