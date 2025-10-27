@@ -16,16 +16,16 @@ export class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  // Método privado: fecha ao pressionar ESC
+  // Fecha ao pressionar ESC
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();
     }
   }
 
-  // Adiciona os event listeners de fechamento
+  // Configura eventos do popup
   setEventListeners() {
-    // Fecha ao clicar no botão de fechar
+    // Botão de fechar
     this._popup.querySelector(".popup__close").addEventListener("click", () => {
       this.close();
     });
