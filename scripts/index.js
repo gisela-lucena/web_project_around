@@ -8,34 +8,58 @@ import { popupForm, addPlaceForm } from "./utils.js";
 import { Section } from "./Section.js";
 import { UserInfo } from "./UserInfo.js";
 import { formValidation } from "./utils.js";
+import { api } from "./Api.js";
 
-// ---- Cards iniciais ----
-const initialCards = [
-  {
-    name: "Vale de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-  },
-];
+// ---- user info ----
+
+const username = document.querySelector(".profile__title");
+const about = document.querySelector(".profile__subtitle");
+const avatar = document.querySelector(".profile__image");
+const cardList = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#initial_card").content;
+const cardElement = cardTemplate.querySelector(".card");
+const usernameInput = document.querySelector(".popup__input_type_name");
+const aboutInput = document.querySelector(".popup__input_type_about");
+const form = document.querySelector(".popup__form");
+
+api
+  .getInitialData()
+  .then(([userData, initialCards]) => {
+    console.log(userData);
+    console.log(initialCards);
+    username.textContent = userData.name;
+    about.textContent = userData.about;
+    avatar.src = userData.avatar;
+
+    initialCards.forEach((card) => {
+      const newCard = cardElement.cloneNode(true);
+      newCard.querySelector(".card__title").textContent = card.name;
+      newCard.querySelector(".card__image").src = card.link;
+      cardList.append(newCard);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+form.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  const newUsername = usernameInput.value;
+  const newAbout = aboutInput.value;
+
+  api
+    .setUserData({ name: newUsername, about: newAbout })
+    .then((data) => {
+      username.textContent = data.name;
+      about.textContent = data.about;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+const initialCards = document.querySelector("#initial_card").content;
 
 // ---- Adicionar novo card ----
 const cardImagePopup = new PopupWithImage("#image-popup");
