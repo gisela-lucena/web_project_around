@@ -1,8 +1,20 @@
-:root {
-  font-family: Inter, sans-serif;
-  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/web/Inter-Regular.woff2") format("woff2");
 }
 
-@supports (font-variation-settings: normal) {
-  :root { font-family: InterVariable, sans-serif; }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/web/Inter-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: url("./fonts/web/Inter-Black.woff2") format("woff2");
 }

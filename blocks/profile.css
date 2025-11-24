@@ -12,7 +12,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  }
+}
 
 .profile__info-container {
   display: flex;
@@ -23,7 +23,7 @@
 
 .profile__info {
   display: flex;
-  }
+}
 
 .profile__title {
   max-width: 415px;
@@ -34,7 +34,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  }
+}
 
 .profile__edit-button {
   width: 24px;
@@ -59,7 +59,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  }
+}
 
 .profile__add-place {
   width: 150px;
@@ -74,38 +74,71 @@
   opacity: 0.6;
 }
 
+.profile__picture {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 100%;
+  position: relative;
+}
+
+.profile__picture-overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile__picture-edit-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-image: url("../images/editProfileAvatar.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile__picture:hover .profile__picture-edit-icon {
+  opacity: 1;
+}
+
 @media screen and (max-width: 544px) {
   .profile {
-  padding-top: 42px;
-  max-width: 282px;
-  flex-direction: column;
+    padding-top: 42px;
+    max-width: 282px;
+    flex-direction: column;
   }
 
+  .profile__info-container {
+    align-items: center;
+    margin: 30px auto 36px;
+  }
 
- .profile__info-container {
-  align-items: center;
-  margin: 30px auto 36px;
+  .profile__title {
+    max-width: 224px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 10px;
+    justify-content: center;
+  }
+
+  .profile__subtitle {
+    font-size: 14px;
+    max-width: 282px;
+  }
+
+  .profile__add-place {
+    width: 282px;
+  }
 }
-
-.profile__title {
-  max-width: 224px;
-  font-size: 22px;
-  line-height: 1;
-  }
-
-.profile__edit-button {
-  width: 18px;
-  height: 18px;
-  margin: 0 0 0 10px;
-  justify-content: center;
-}
-
-.profile__subtitle {
-  font-size: 14px;
-  max-width: 282px;
-  }
-
-.profile__add-place {
-  width: 282px;
-}
-  }

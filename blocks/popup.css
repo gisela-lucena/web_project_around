@@ -146,3 +146,27 @@
   row-gap: 5px;
   padding: 0 20px 0;
 }
+
+.popup__confirm-button {
+  background-color: black;
+  color: white;
+  border: none;
+  width: 358px;
+  height: 50px;
+  margin: 0 auto 36px;
+}
+
+.popup__confirm-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.popup__confirm-title {
+  display: flex;
+  justify-content: flex-start;
+  width: 358px;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 900;
+  margin: 34px auto 38px;
+}

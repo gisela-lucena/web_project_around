@@ -9,71 +9,82 @@ import { Section } from "./Section.js";
 import { UserInfo } from "./UserInfo.js";
 import { formValidation } from "./utils.js";
 import { api } from "./Api.js";
+import { PopupWithConfirmation } from "./PopupWithConfirmation.js";
 
 // ---- user info ----
 
-const username = document.querySelector(".profile__title");
-const about = document.querySelector(".profile__subtitle");
-const avatar = document.querySelector(".profile__image");
-const cardList = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#initial_card").content;
-const cardElement = cardTemplate.querySelector(".card");
-const usernameInput = document.querySelector(".popup__input_type_name");
-const aboutInput = document.querySelector(".popup__input_type_about");
-const form = document.querySelector(".popup__form");
+const confirmationPopup = new PopupWithConfirmation("#confirm-popup", () => {
+  // Lógica de confirmação aqui
+});
+confirmationPopup.setEventListeners();
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__subtitle",
+  avatarSelector: ".profile__image",
+});
 
 api
   .getInitialData()
   .then(([userData, initialCards]) => {
-    console.log(userData);
-    console.log(initialCards);
-    username.textContent = userData.name;
-    about.textContent = userData.about;
-    avatar.src = userData.avatar;
-
-    initialCards.forEach((card) => {
-      const newCard = cardElement.cloneNode(true);
-      newCard.querySelector(".card__title").textContent = card.name;
-      newCard.querySelector(".card__image").src = card.link;
-      cardList.append(newCard);
+    userInfo.setUserInfo({
+      name: userData.name,
+      job: userData.about,
+      avatar: userData.avatar,
     });
+    cardsList.renderItems(initialCards);
   })
   .catch((err) => {
     console.log(err);
   });
-
-form.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-
-  const newUsername = usernameInput.value;
-  const newAbout = aboutInput.value;
-
-  api
-    .setUserData({ name: newUsername, about: newAbout })
-    .then((data) => {
-      username.textContent = data.name;
-      about.textContent = data.about;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-const initialCards = document.querySelector("#initial_card").content;
 
 // ---- Adicionar novo card ----
 const cardImagePopup = new PopupWithImage("#image-popup");
 
 const cardsList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       const cardInstance = new Card(
         item.name,
         item.link,
+        item.isLiked,
         "#initial_card",
         () => {
           cardImagePopup.open({ name: item.name, link: item.link });
+        },
+        () => {
+          confirmationPopup.open();
+          confirmationPopup.setSubmitAction(() => {
+            api
+              .deleteCard(item._id)
+              .then(() => {
+                cardInstance.removeCard();
+                confirmationPopup.close();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        },
+        () => {
+          api
+            .likeCard(item._id)
+            .then((updatedCard) => {
+              console.log("Card liked:", updatedCard);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        },
+        () => {
+          api
+            .unlikeCard(item._id)
+            .then((updatedCard) => {
+              console.log("Card unliked:", updatedCard);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       );
       const newCard = cardInstance.generateCard();
@@ -121,10 +132,23 @@ addCardButton.addEventListener("click", () => {
 
 // Cria a instância do popup imagem
 const newCardPopup = new PopupWithForm("#add-card-popup", (formData) => {
-  const cardInstance = new Card(formData.name, formData.link, "#initial_card");
-
-  const newCard = cardInstance.generateCard();
-  cardsList.addItem(newCard);
+  api
+    .addNewCard(formData.name, formData.link)
+    .then((cardData) => {
+      const cardInstance = new Card(
+        cardData.name,
+        cardData.link,
+        "#initial_card",
+        () => {
+          cardImagePopup.open({ name: cardData.name, link: cardData.link });
+        }
+      );
+      const newCard = cardInstance.generateCard();
+      cardsList.addItem(newCard);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   newCardPopup.close();
 });
@@ -137,14 +161,24 @@ const profileInfoPopup = new PopupWithForm(
       jobSelector: ".profile__subtitle",
     });
 
-    userInfo.setUserInfo(formData);
+    api
+      .setUserData(formData.name, formData.job)
+      .then((data) => {
+        console.log(data);
+        userInfo.setUserInfo(formData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     profileInfoPopup.close();
   }
 );
+
+// const avatarPopup = new
 
 cardImagePopup.setEventListeners();
 addCardValidation.enableValidation();
 validationConfig.enableValidation();
 newCardPopup.setEventListeners();
 profileInfoPopup.setEventListeners();
-cardsList.renderItems();
