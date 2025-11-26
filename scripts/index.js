@@ -150,6 +150,7 @@ avatarEditButton.addEventListener("click", () => {
 
 // Cria a instância do popup imagem
 const newCardPopup = new PopupWithForm("#add-card-popup", (formData) => {
+  newCardPopup.renderLoading(true);
   api
     .addNewCard(formData.name, formData.link)
     .then((cardData) => {
@@ -202,9 +203,11 @@ const newCardPopup = new PopupWithForm("#add-card-popup", (formData) => {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      newCardPopup.close();
+      newCardPopup.renderLoading(false);
     });
-
-  newCardPopup.close();
 });
 
 const profileInfoPopup = new PopupWithForm(
@@ -214,7 +217,7 @@ const profileInfoPopup = new PopupWithForm(
       nameSelector: ".profile__title",
       jobSelector: ".profile__subtitle",
     });
-
+    profileInfoPopup.renderLoading(true);
     api
       .setUserData(formData.name, formData.job)
       .then((data) => {
@@ -223,14 +226,17 @@ const profileInfoPopup = new PopupWithForm(
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        profileInfoPopup.close();
+        profileInfoPopup.renderLoading(false);
       });
-
-    profileInfoPopup.close();
   }
 );
 
 const avatarPopup = new PopupWithForm("#edit-profile-avatar", (formData) => {
-    api
+  avatarPopup.renderLoading(true);
+  api
     .updateAvatar(formData.avatar)
     .then((data) => {
       console.log(data);
@@ -239,18 +245,12 @@ const avatarPopup = new PopupWithForm("#edit-profile-avatar", (formData) => {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      avatarPopup.close();
+      avatarPopup.renderLoading(false);
     });
-  avatarPopup.close();
 });
-
-// function renderLoading(isLoading, buttonElement, loadingText = "Salvando...") {
-//   if (isLoading) {
-//     buttonElement.textContent = loadingText;
-//   } else {
-//     buttonElement.textContent = buttonElement.dataset.defaultText;
-//   }
-
-// }
 
 cardImagePopup.setEventListeners();
 addCardValidation.enableValidation();
@@ -259,4 +259,3 @@ newCardPopup.setEventListeners();
 profileInfoPopup.setEventListeners();
 avatarPopup.setEventListeners();
 avatarValidation.enableValidation();
-

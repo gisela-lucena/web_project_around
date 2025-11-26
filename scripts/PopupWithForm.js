@@ -29,4 +29,17 @@ export class PopupWithForm extends Popup {
     super.close();
     this._form.reset();
   }
+
+  getSubmitButton() {
+    return this._form.querySelector(".popup__button");
+  }
+
+  renderLoading(isLoading, defaultText = "Salvar") {
+    const submitButton = this.getSubmitButton();
+    if (isLoading) {
+      submitButton.textContent = "Salvando...";
+    } else {
+      submitButton.textContent = defaultText;
+    }
+  }
 }

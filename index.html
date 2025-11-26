@@ -106,6 +106,7 @@
             disabled
             class="popup__button popup__button-active popup__button-disabled"
             type="submit"
+            data-default-text="Salvar"
           >
             Salvar
           </button>
@@ -113,7 +114,9 @@
       </div>
     </div>
     <div class="popup" id="edit-profile-avatar">
-      <div class="popup__content popup__avatar popup__container popup__container_type_image">
+      <div
+        class="popup__content popup__avatar popup__container popup__container_type_image"
+      >
         <button aria-label="Close popup" class="popup__close" type="button">
           <img
             class="popup__close-icon"
@@ -124,9 +127,7 @@
         </button>
         <h3 class="popup__title">Alterar a foto do perfil</h3>
         <form class="popup__form" id="edit-avatar-form" novalidate>
-          <div
-            class="popup__input-container"
-          >
+          <div class="popup__input-container">
             <input
               class="popup__input popup__input_edit_avatar"
               name="avatar"
@@ -140,6 +141,7 @@
             disabled
             class="popup__button popup__button-active popup__button-disabled"
             type="submit"
+            data-default-text="Salvar"
           >
             Salvar
           </button>
@@ -193,6 +195,7 @@
             disabled
             class="popup__button popup__button-addplace"
             type="submit"
+            data-default-text="Criar"
           >
             Criar
           </button>
@@ -216,7 +219,13 @@
         </button>
         <h3 class="popup__confirm-title">Tem certeza?</h3>
         <form class="popup__form" id="add-card-form" novalidate>
-          <button class="popup__confirm-button" type="submit">Sim</button>
+          <button
+            class="popup__button popup__confirm-button"
+            type="submit"
+            data-default-text="Sim"
+          >
+            Sim
+          </button>
         </form>
       </div>
     </div>
