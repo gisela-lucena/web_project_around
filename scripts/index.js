@@ -110,6 +110,18 @@ const addCardValidation = new FormValidator(
   addPlaceForm
 );
 
+const avatarValidation = new FormValidator(
+  {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button-disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__input-error",
+  },
+  document.querySelector("#edit-profile-avatar .popup__form")
+);
+
 // Cria a instância do popup
 const popup = new Popup("#edit-popup-profile");
 popup.setEventListeners();
@@ -130,17 +142,59 @@ addCardButton.addEventListener("click", () => {
   addCardsPopUpopup.open();
 });
 
+// botão que abre o popup avatar
+const avatarEditButton = document.querySelector(".profile__picture");
+avatarEditButton.addEventListener("click", () => {
+  avatarPopup.open();
+});
+
 // Cria a instância do popup imagem
 const newCardPopup = new PopupWithForm("#add-card-popup", (formData) => {
   api
     .addNewCard(formData.name, formData.link)
     .then((cardData) => {
+      console.log(cardData);
       const cardInstance = new Card(
         cardData.name,
         cardData.link,
+        cardData.isLiked,
         "#initial_card",
         () => {
           cardImagePopup.open({ name: cardData.name, link: cardData.link });
+        },
+        () => {
+          confirmationPopup.open();
+          confirmationPopup.setSubmitAction(() => {
+            api
+              .deleteCard(cardData._id)
+              .then(() => {
+                cardInstance.removeCard();
+                confirmationPopup.close();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        },
+        () => {
+          api
+            .likeCard(cardData._id)
+            .then((updatedCard) => {
+              console.log("Card liked:", updatedCard);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        },
+        () => {
+          api
+            .unlikeCard(cardData._id)
+            .then((updatedCard) => {
+              console.log("Card unliked:", updatedCard);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       );
       const newCard = cardInstance.generateCard();
@@ -175,10 +229,34 @@ const profileInfoPopup = new PopupWithForm(
   }
 );
 
-// const avatarPopup = new
+const avatarPopup = new PopupWithForm("#edit-profile-avatar", (formData) => {
+    api
+    .updateAvatar(formData.avatar)
+    .then((data) => {
+      console.log(data);
+      userInfo.setUserAvatar(data.avatar);
+      console.log("screenshot");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  avatarPopup.close();
+});
+
+// function renderLoading(isLoading, buttonElement, loadingText = "Salvando...") {
+//   if (isLoading) {
+//     buttonElement.textContent = loadingText;
+//   } else {
+//     buttonElement.textContent = buttonElement.dataset.defaultText;
+//   }
+
+// }
 
 cardImagePopup.setEventListeners();
 addCardValidation.enableValidation();
 validationConfig.enableValidation();
 newCardPopup.setEventListeners();
 profileInfoPopup.setEventListeners();
+avatarPopup.setEventListeners();
+avatarValidation.enableValidation();
+

@@ -85,16 +85,9 @@
 .profile__picture-overlay {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.profile__picture-edit-icon {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   background-image: url("../images/editProfileAvatar.png");
   background-repeat: no-repeat;
@@ -104,7 +97,7 @@
   cursor: pointer;
 }
 
-.profile__picture:hover .profile__picture-edit-icon {
+.profile__picture:hover .profile__picture-overlay {
   opacity: 1;
 }
 

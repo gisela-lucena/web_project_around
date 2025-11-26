@@ -28,19 +28,12 @@
       <main class="content">
         <section class="profile">
           <div class="profile__picture">
-            <div class="profile__picture-overlay">
-              <img
-                class="profile__image"
-                src=""
-                alt="Jacques Cousteau profile picture"
-              />
-            </div>
-
             <img
-              class="profile__picture-edit-icon"
+              class="profile__image"
               src=""
-              alt=""
+              alt="Jacques Cousteau profile picture"
             />
+            <div class="profile__picture-overlay"></div>
           </div>
           <div class="profile__info-container">
             <div class="profile__info">
@@ -80,7 +73,7 @@
           />
         </button>
         <h3 class="popup__title">Editar Perfil</h3>
-        <form class="popup__form input" id="edit-profile-form" novalidate>
+        <form class="popup__form" id="edit-profile-form" novalidate>
           <div class="popup__input-container">
             <input
               class="popup__input popup__input_edit_name"
@@ -120,7 +113,7 @@
       </div>
     </div>
     <div class="popup" id="edit-profile-avatar">
-      <div class="popup__content popup__avatar">
+      <div class="popup__content popup__avatar popup__container popup__container_type_image">
         <button aria-label="Close popup" class="popup__close" type="button">
           <img
             class="popup__close-icon"
@@ -130,13 +123,13 @@
           />
         </button>
         <h3 class="popup__title">Alterar a foto do perfil</h3>
-        <form class="popup__form input" id="edit-profile-form" novalidate>
+        <form class="popup__form" id="edit-avatar-form" novalidate>
           <div
-            class="popup__input-container popup__container popup__container_type_image"
+            class="popup__input-container"
           >
             <input
               class="popup__input popup__input_edit_avatar"
-              name="link"
+              name="avatar"
               placeholder="Link de imagem"
               type="url"
               required
